@@ -47,6 +47,13 @@ colorTagText | color | - | 标签文本颜色
 colorTagBg | color | - | 标签背景颜色
 radiusTagBg | [HusRadius](internal://HusRadius) | - | 标签圆角
 \n<br/>
+\n### 模型{options}支持的属性：\n
+属性名 | 类型 | 可选/必选 | 描述
+------ | --- | :---: | ---
+label | string | 必选 | 本选择项的标签
+value | var | 可选 | 本选择项的值
+enabled | bool | 可选 | 本选择项是否启用
+\n<br/>
 \n### 支持的函数：\n
 - \`findKey(key: string): var\` 查找 \`key\` 处的选项数据 \n
 - \`filter()\` 过滤选项列表 \n
@@ -265,7 +272,7 @@ radiusTagBg | [HusRadius](internal://HusRadius) | - | 标签圆角
                             { value: 'jack', label: 'Jack' },
                             { value: 'lucy', label: 'Lucy' },
                             { value: 'Yiminghe', label: 'yiminghe' },
-                            { value: 'disabled', label: 'Disabled', disabled: true },
+                            { value: 'disabled', label: 'Disabled', enabled: false },
                         ]
                     }
 
@@ -276,7 +283,7 @@ radiusTagBg | [HusRadius](internal://HusRadius) | - | 标签圆角
                             { value: 'jack', label: 'Jack' },
                             { value: 'lucy', label: 'Lucy' },
                             { value: 'Yiminghe', label: 'yiminghe' },
-                            { value: 'disabled', label: 'Disabled', disabled: true },
+                            { value: 'disabled', label: 'Disabled', enabled: false },
                         ]
                     }
 
@@ -287,7 +294,7 @@ radiusTagBg | [HusRadius](internal://HusRadius) | - | 标签圆角
                             { value: 'jack', label: 'Jack' },
                             { value: 'lucy', label: 'Lucy' },
                             { value: 'Yiminghe', label: 'yiminghe' },
-                            { value: 'disabled', label: 'Disabled', disabled: true },
+                            { value: 'disabled', label: 'Disabled', enabled: false },
                         ]
                     }
 
@@ -298,7 +305,7 @@ radiusTagBg | [HusRadius](internal://HusRadius) | - | 标签圆角
                             { value: 'jack', label: 'Jack' },
                             { value: 'lucy', label: 'Lucy' },
                             { value: 'Yiminghe', label: 'yiminghe' },
-                            { value: 'disabled', label: 'Disabled', disabled: true },
+                            { value: 'disabled', label: 'Disabled', enabled: false },
                         ]
                     }
                 }
@@ -316,7 +323,7 @@ radiusTagBg | [HusRadius](internal://HusRadius) | - | 标签圆角
                             { value: 'jack', label: 'Jack' },
                             { value: 'lucy', label: 'Lucy' },
                             { value: 'Yiminghe', label: 'yiminghe' },
-                            { value: 'disabled', label: 'Disabled', disabled: true },
+                            { value: 'disabled', label: 'Disabled', enabled: false },
                         ]
                     }
 
@@ -327,7 +334,7 @@ radiusTagBg | [HusRadius](internal://HusRadius) | - | 标签圆角
                             { value: 'jack', label: 'Jack' },
                             { value: 'lucy', label: 'Lucy' },
                             { value: 'Yiminghe', label: 'yiminghe' },
-                            { value: 'disabled', label: 'Disabled', disabled: true },
+                            { value: 'disabled', label: 'Disabled', enabled: false },
                         ]
                     }
                 }
@@ -342,7 +349,7 @@ radiusTagBg | [HusRadius](internal://HusRadius) | - | 标签圆角
                             { value: 'jack', label: 'Jack' },
                             { value: 'lucy', label: 'Lucy' },
                             { value: 'Yiminghe', label: 'yiminghe' },
-                            { value: 'disabled', label: 'Disabled', disabled: true },
+                            { value: 'disabled', label: 'Disabled', enabled: false },
                         ]
                     }
 
@@ -353,7 +360,7 @@ radiusTagBg | [HusRadius](internal://HusRadius) | - | 标签圆角
                             { value: 'jack', label: 'Jack' },
                             { value: 'lucy', label: 'Lucy' },
                             { value: 'Yiminghe', label: 'yiminghe' },
-                            { value: 'disabled', label: 'Disabled', disabled: true },
+                            { value: 'disabled', label: 'Disabled', enabled: false },
                         ]
                     }
                 }
@@ -536,7 +543,7 @@ radiusTagBg | [HusRadius](internal://HusRadius) | - | 标签圆角
                             const list = [];
                             for (let i = 0; i < 100000; i++) {
                                 const label = \`\${i.toString(36)}\${i}\`;
-                                list.push({ key: label, label: label, disabled: i === 10 });
+                                list.push({ key: label, label: label, enabled: i % 10 !== 0 });
                             }
                             options = list;
                         }
@@ -556,7 +563,7 @@ radiusTagBg | [HusRadius](internal://HusRadius) | - | 标签圆角
                             const list = [];
                             for (let i = 0; i < 100000; i++) {
                                 const label = `${i.toString(36)}${i}`;
-                                list.push({ key: label, label: label, disabled: i === 10 });
+                                list.push({ key: label, label: label, enabled: i % 10 !== 0 });
                             }
                             options = list;
                         }

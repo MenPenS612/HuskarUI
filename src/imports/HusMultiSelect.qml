@@ -44,7 +44,8 @@ HusSelect {
     readonly property alias tagCount: __tagListModel.count
     property int maxTagCount: -1
     property int tagSpacing: 5 * sizeRatio
-    property color colorTagText: themeSource.colorTagText
+    property color colorTagText: enabled ? themeSource.colorTagText :
+                                           themeSource.colorTagTextDisabled
     property color colorTagBg: themeSource.colorTagBg
     property HusRadius radiusTagBg: HusRadius { all: themeSource.radiusTagBg }
 
@@ -64,8 +65,8 @@ HusSelect {
         required property int index
         required property var tagData
 
-        implicitWidth: __row.implicitWidth + 16 * sizeRatio
-        implicitHeight: Math.max(__text.implicitHeight, __closeIcon.implicitHeight) + 4 * sizeRatio
+        implicitWidth: __row.implicitWidth + 16 * control.sizeRatio
+        implicitHeight: Math.max(__text.implicitHeight, __closeIcon.implicitHeight) + 4 * control.sizeRatio
         radius: control.radiusTagBg.all
         topLeftRadius: control.radiusTagBg.topLeft
         topRightRadius: control.radiusTagBg.topRight
@@ -80,7 +81,7 @@ HusSelect {
         Row {
             id: __row
             anchors.centerIn: parent
-            spacing: 5 * sizeRatio
+            spacing: 5 * control.sizeRatio
 
             HusText {
                 id: __text
@@ -96,7 +97,7 @@ HusSelect {
                 id: __closeIcon
                 anchors.verticalCenter: parent.verticalCenter
                 colorIcon: __hoverHander.hovered ? control.themeSource.colorTagCloseHover : control.themeSource.colorTagClose
-                iconSize: (parseInt(control.themeSource.fontSize) - 2) * sizeRatio
+                iconSize: (parseInt(control.themeSource.fontSize) - 2) * control.sizeRatio
                 iconSource: HusIcon.CloseOutlined
                 verticalAlignment: Text.AlignVCenter
 
@@ -351,8 +352,8 @@ HusSelect {
 
                 required property var model
                 required property int index
-                property string key: model.key
-                property bool selected: __private.selectedKeysMap.has(key)
+                readonly property string key: model.key
+                readonly property bool selected: __private.selectedKeysMap.has(key)
 
                 width: __popupListView.width
                 height: implicitContentHeight + topPadding + bottomPadding
@@ -421,13 +422,11 @@ HusSelect {
                     y: __popupDelegate.height
                     anchors.horizontalCenter: parent.horizontalCenter
                     active: control.showToolTip
-                    sourceComponent: HusToolTip {
-                        showArrow: false
-                        visible: __popupDelegate.hovered
-                        animationEnabled: control.animationEnabled
-                        text: __popupDelegate.model[control.textRole]
-                        position: HusToolTip.Position_Bottom
-                    }
+                    sourceComponent: control.toolTipDelegate
+                    property alias index: __popupDelegate.index
+                    property alias model: __popupDelegate.model
+                    property alias hovered: __popupDelegate.hovered
+                    property alias pressed: __popupDelegate.pressed
                 }
             }
             T.ScrollBar.vertical: HusScrollBar {
@@ -453,7 +452,7 @@ HusSelect {
             selectedKeysMapChanged();
         }
 
-        function insert(index: int, key: string, data: va) {
+        function insert(index: int, key: string, data: var) {
             if (!selectedKeysMap.has(key)) {
                 __tagListModel.insert(index, { '__related__': key, 'tagData': data });
                 selectedKeysMap.set(key, data);
