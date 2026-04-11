@@ -68,7 +68,7 @@ T.Control {
     property string currentBeforeLabel: ''
     property string currentAfterLabel: ''
     property var formatter: (value, locale) => value.toLocaleString(locale, 'f', precision)
-    property var parser: (text, locale) => HusApi.clamp(Number.fromLocaleString(locale, text), min, max)
+    property var parser: (text, locale) => Number.fromLocaleString(locale, text)
     property int defaultHandlerWidth: 22
     property alias colorText: __input.colorText
     property alias colorBg: __input.colorBg
@@ -268,6 +268,7 @@ T.Control {
         locale: control.locale.name
         bottom: Math.min(control.min, control.max)
         top: Math.max(control.min, control.max)
+        decimals: control.precision
     }
     font {
         family: themeSource.fontFamily
@@ -340,6 +341,12 @@ T.Control {
             onActiveFocusChanged: {
                 if (!activeFocus) editingFinished();
             }
+            onTextChanged: {
+                if (length === 0) return;
+                if (control.parser(text, control.locale) > control.max) {
+                    editingFinished();
+                }
+            }
             onEditingFinished: {
                 if (length === 0) return;
                 let v = control.parser(text, control.locale);
@@ -347,6 +354,7 @@ T.Control {
                 control.value = v;
                 control.valueModified();
             }
+            Component.onCompleted: editingFinished();
 
             Keys.onReturnPressed: {
                 editingFinished();

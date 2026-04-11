@@ -326,10 +326,6 @@ T.Control {
         property var contentDelegate: null
         property var bgDelegate: null
 
-        onClicked: {
-            if (showExpanded)
-                expanded = !expanded;
-        }
         hoverCursorShape: (isGroup && !control.compactMode !== HusMenu.Mode_Relaxed) ? Qt.ArrowCursor : Qt.PointingHandCursor
         animationEnabled: control.animationEnabled
         effectEnabled: false
@@ -583,6 +579,9 @@ T.Control {
                     contentDelegate: __rootItem.menuContentDelegate
                     bgDelegate: __rootItem.menuBgDelegate
                     onClicked: {
+                        if (showExpanded) {
+                            expanded = !expanded;
+                        }
                         if (__rootItem.menuChildrenLength === 0) {
                             __private.selectedItem = __rootItem;
                             control.selectedKey = __rootItem.menuKey;

@@ -28,7 +28,7 @@
 
   - `hovered: bool` 是否悬浮
 
-  - `isCurrent: var` 是否为当前项
+  - `isCurrent: bool` 是否为当前项
 
 - **iconDelegate: Component** 内容代理，代理可访问属性：
 
@@ -40,9 +40,9 @@
 
   - `hovered: bool` 是否悬浮
 
-  - `isCurrent: var` 是否为当前项
+  - `isCurrent: bool` 是否为当前项
 
-- **toolTipDelegate: Component** 内容代理，代理可访问属性：
+- **toolTipDelegate: Component** 文本提示代理，代理可访问属性：
 
   - `index: int` 模型数据索引
 
@@ -52,7 +52,7 @@
 
   - `hovered: bool` 是否悬浮
 
-  - `isCurrent: var` 是否为当前项
+  - `isCurrent: bool` 是否为当前项
 
 
 <br/>
@@ -68,6 +68,7 @@ currentValue | var(readonly) | - | 当前值
 count | int(readonly) | - | 选项数量
 block | bool | false | 是否填充父元素整行
 orientation | enum | Qt.Horizontal | 方向(来自 Qt.*)
+defaultItemHeight | real | 26 | 默认项高度
 iconSpacing | int | 5 | 图标间隔
 iconFont | font | - | 图标字体
 colorBg | color | - | 背景颜色
@@ -85,7 +86,7 @@ sizeHint | string | 'normal' | 尺寸提示
 label | string | 必选 | 标签文本
 value | var | 可选 | 值(默认为label)
 enabled | bool | 可选 | 是否启用
-toolTip | - | 可选 | 文本提示
+toolTip | string | 可选 | 文本提示
 iconSource | int丨string | 可选 | 本标签的图标源
 
 <br/>

@@ -12,9 +12,9 @@ def load_metainfo(file_path: str) -> List[Dict[str, Any]]:
         print(f"Error reading file {file_path}: {e}")
         sys.exit(1)
 
-def find_component(data: List[Dict[str, Any]], name: str) -> Optional[Dict[str, Any]]:
+def find_component(data: List[Dict[str, Any]], title: str) -> Optional[Dict[str, Any]]:
     for component in data:
-        if component.get('name') == name:
+        if component.get('title') == title:
             return component
     return None
 
@@ -22,15 +22,15 @@ def search_components(data: List[Dict[str, Any]], keyword: str) -> List[str]:
     results = []
     keyword = keyword.lower()
     for component in data:
-        name = component.get('name', '').lower()
+        title = component.get('title', '').lower()
         doc = component.get('doc', '').lower()
-        if keyword in name or keyword in doc:
-            results.append(component['name'])
+        if keyword in title or keyword in doc:
+            results.append(component['title'])
     return results
 
 def format_component(component: Dict[str, Any]) -> str:
     output = []
-    output.append(f"# {component.get('name')}")
+    output.append(f"# {component.get('title')}")
     output.append(component.get('doc', 'No documentation available.'))
     
     examples = component.get('examples', [])
@@ -60,8 +60,8 @@ def main() -> None:
     data = load_metainfo(args.file)
 
     if args.query == 'list':
-        names = [c.get('name') for c in data]
-        print("\n".join(names))
+        titles = [c.get('title') for c in data]
+        print("\n".join(titles))
         return
 
     # Try exact match first if requested or if it looks like a component name

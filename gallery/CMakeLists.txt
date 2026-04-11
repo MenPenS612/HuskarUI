@@ -69,6 +69,7 @@ qt_add_qml_module(${PROJECT_NAME}
         qml/Examples/DataEntry/ExpInputInteger.qml
         qml/Examples/DataEntry/ExpInputNumber.qml
         qml/Examples/DataEntry/ExpMultiSelect.qml
+        qml/Examples/DataEntry/ExpMultiCheckBox.qml
         qml/Examples/DataEntry/ExpDateTimePicker.qml
         qml/Examples/DataEntry/ExpDateTimePickerPanel.qml
         qml/Examples/DataEntry/ExpTextArea.qml
@@ -102,6 +103,7 @@ qt_add_qml_module(${PROJECT_NAME}
         qml/Examples/Navigation/ExpBreadcrumb.qml
         qml/Examples/Layout/ExpDivider.qml
         qml/Examples/Layout/ExpSpace.qml
+        qml/Examples/Layout/ExpGroupBox.qml
         qml/Examples/Effect/ExpAcrylic.qml
         qml/Examples/Effect/ExpLiquidGlass.qml
         qml/Examples/Effect/ExpSwitchEffect.qml

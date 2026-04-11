@@ -77,6 +77,8 @@ sources_table = {
     "HusDivider": ["src/imports/HusDivider.qml"],
     "HusDrawer": ["src/imports/HusDrawer.qml"],
     "HusEmpty": ["src/imports/HusEmpty.qml"],
+    "HusFrame": ["src/imports/HusFrame.qml"],
+    "HusGroupBox": ["src/imports/HusGroupBox.qml"],
     "HusIconButton": ["src/imports/HusIconButton.qml"],
     "HusIconText": ["src/imports/HusIconText.qml"],
     "HusImage": ["src/imports/HusImage.qml"],
@@ -85,13 +87,16 @@ sources_table = {
     "HusInputInteger": ["src/imports/HusInputInteger.qml"],
     "HusInputNumber": ["src/imports/HusInputNumber.qml"],
     "HusLabel": ["src/imports/HusLabel.qml"],
+    "HusLiquidGlass": ["src/imports/HusLiquidGlass.qml"],
     "HusMenu": ["src/imports/HusMenu.qml"],
     "HusMessage": ["src/imports/HusMessage.qml"],
     "HusModal": ["src/imports/HusModal.qml"],
     "HusMoveMouseArea": ["src/imports/HusMoveMouseArea.qml"],
+    "HusMultiCheckBox": ["src/imports/HusMultiCheckBox.qml"],
     "HusMultiSelect": ["src/imports/HusMultiSelect.qml"],
     "HusNotification": ["src/imports/HusNotification.qml"],
     "HusOTPInput": ["src/imports/HusOTPInput.qml"],
+    "HusPage": ["src/imports/HusPage.qml"],
     "HusPagination": ["src/imports/HusPagination.qml"],
     "HusPopconfirm": ["src/imports/HusPopconfirm.qml"],
     "HusPopover": ["src/imports/HusPopover.qml"],
@@ -109,6 +114,7 @@ sources_table = {
     "HusSpin": ["src/imports/HusSpin.qml"],
     "HusSwitch": ["src/imports/HusSwitch.qml"],
     "HusSwitchEffect": ["src/imports/HusSwitchEffect.qml"],
+    "HusSegmented": ["src/imports/HusSegmented.qml"],
     "HusTableView": ["src/imports/HusTableView.qml"],
     "HusTabView": ["src/imports/HusTabView.qml"],
     "HusTag": ["src/imports/HusTag.qml"],
@@ -405,7 +411,12 @@ def save_docs_to_json(docs: List[Dict[str, Any]], output_path: Path) -> None:
     """
     for doc in docs:
         if doc.get("doc"):
-            doc["doc"] = clean_escape_sequences(doc["doc"])
+            docString = clean_escape_sequences(doc["doc"])
+            doc["doc"] = docString
+            doc["title"] = docString.splitlines()[0].replace("#", "").strip()
+            
+        if not doc.get("title"):
+            doc["title"] = doc["name"]
 
         for example in doc.get("examples", []):
             if example.get("description"):
