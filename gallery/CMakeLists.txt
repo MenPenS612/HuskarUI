@@ -128,6 +128,7 @@ qt_add_qml_module(${PROJECT_NAME}
         qml/Controls/ThemeToken.qml
         qml/Controls/UpdateDesc.qml
         qml/Controls/CommitHistory.qml
+        qml/Controls/GradientFlowEffect.qml
         qml/Home/HomePage.qml
         qml/Home/AboutPage.qml
         qml/Home/SettingsPage.qml

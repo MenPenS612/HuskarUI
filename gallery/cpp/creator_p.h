@@ -241,7 +241,6 @@ int main(int argc, char *argv[])
         &app,
         []() { QCoreApplication::exit(-1); },
         Qt::QueuedConnection);
-    engine.singletonInstance<QJSValue>("HuskarUI.Basic", "HusApp");
     engine.loadFromModule("%1", "Main");
 
     return app.exec();
@@ -273,7 +272,6 @@ int main(int argc, char *argv[])
         []() { QCoreApplication::exit(-1); },
         Qt::QueuedConnection);
     engine.addImportPath(HUSKARUI_IMPORT_PATH);
-    engine.singletonInstance<QJSValue>("HuskarUI.Basic", "HusApp");
     engine.loadFromModule("%1", "Main");
 
     return app.exec();

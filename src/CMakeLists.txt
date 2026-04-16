@@ -113,6 +113,7 @@ qt_add_qml_module(${PROJECT_NAME}
     VERSION 1.0
     DESIGNER_SUPPORTED
     PLUGIN_TARGET ${PLUGIN_NAME}
+    NO_GENERATE_PLUGIN_SOURCE
     OUTPUT_TARGETS HUSKARUI_QML_OUTPUT_TARGETS #Export for static lib
     RESOURCE_PREFIX "/"
     TYPEINFO "plugins.qmltypes"
@@ -125,7 +126,6 @@ qt_add_qml_module(${PROJECT_NAME}
         $<$<BOOL:${WIN32}>:${HUSKARUI_RC_FILE}>
         cpp/husglobal.h
         cpp/husdefinitions.h
-        #cpp/huskaruiplugin.cpp
         cpp/husapp.h cpp/husapp.cpp
         cpp/theme/hustheme.h cpp/theme/hustheme.cpp cpp/theme/hustheme_p.h
         cpp/theme/husthemefunctions.h cpp/theme/husthemefunctions.cpp
@@ -145,6 +145,10 @@ qt_add_qml_module(${PROJECT_NAME}
         # QR-Code-generator
         ${CMAKE_CURRENT_SOURCE_DIR}/../3rdparty/QR-Code-generator/cpp/qrcodegen.hpp
         ${CMAKE_CURRENT_SOURCE_DIR}/../3rdparty/QR-Code-generator/cpp/qrcodegen.cpp
+)
+
+target_sources(${PLUGIN_NAME} PRIVATE
+    cpp/huskaruiplugin.cpp
 )
 
 hus_get_dir_sources(OUTPUT THEME_SOURCES FILTER "resources/theme/*.json")

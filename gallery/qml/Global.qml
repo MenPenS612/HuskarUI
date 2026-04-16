@@ -185,8 +185,8 @@ QtObject {
                     key: 'HusPagination',
                     label: qsTr('HusPagination 分页'),
                     source: './Examples/Navigation/ExpPagination.qml',
-                    updateVersion: '0.5.4.1',
-                    desc: qsTr('新增 sizeHint 尺寸提示。')
+                    updateVersion: '0.6.0',
+                    desc: qsTr('defaultButton[Width/Height]支持自动宽高。\n拼写变化: [prev/next]ButtonTooltip->[prev/next]ButtonToolTip。')
                 },
                 {
                     key: 'HusContextMenu',

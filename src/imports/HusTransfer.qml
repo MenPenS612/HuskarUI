@@ -86,6 +86,7 @@ T.Control {
         }
     }
     property Component searchInputDelegate: HusInput {
+        animationEnabled: control.animationEnabled
         iconSource: HusIcon.SearchOutlined
         placeholderText: control.searchPlaceholder
         clearEnabled: true
@@ -95,6 +96,7 @@ T.Control {
         padding: 8 * sizeRatio
         topPadding: 4 * sizeRatio
         bottomPadding: 4 * sizeRatio
+        animationEnabled: control.animationEnabled
         text: control.operations[0]
         type: HusButton.Type_Primary
         enabled: control.sourceCheckedKeys.length > 0 && control.enabled
@@ -108,6 +110,7 @@ T.Control {
         padding: 8 * sizeRatio
         topPadding: 4 * sizeRatio
         bottomPadding: 4 * sizeRatio
+        animationEnabled: control.animationEnabled
         text: control.operations[1]
         type: HusButton.Type_Primary
         enabled: control.targetCheckedKeys.length > 0 && control.enabled && !control.oneWay
@@ -348,6 +351,7 @@ T.Control {
                 clip: true
                 visible: typeof control.pagination === 'object'
                 sizeHint: 'small'
+                animationEnabled: control.animationEnabled
                 total: __transferListRoot.filteredData.length
                 pageSize: control.pagination?.pageSize ?? 10
                 pageButtonMaxCount: control.pagination?.pageButtonMaxCount ?? 7

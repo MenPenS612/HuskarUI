@@ -70,7 +70,7 @@ Anyone can discuss through issues, QQ groups, or WeChat groups, and ultimately m
 > # Intelligent agent skills
 >This warehouse provides two intelligent agent skills:
 > - **`huskarui`**：: Use Python to query the documentation, properties, and examples of HuskarUI components from the repository metadata.
-> - **`qmlpreview`**：: Use ` qmlscene ` to preview the currently edited QML file and capture a screenshot of the run to the clipboard.
+> - **`qmlpreviewer`**：: Use ` qmlscene ` to preview the currently edited QML file and capture a screenshot of the run to the clipboard.
 > 
 > They are designed specifically for AI Agent programming tools such as Claude Code and Codex. It can help you:
 > - Quickly query component documents and properties
@@ -174,7 +174,6 @@ The installation directory structure
       ...
       QGuiApplication app(argc, argv);
       QQmlApplicationEngine engine;
-      engine.singletonInstance<QJSValue>("HuskarUI.Basic", "HusApp");
       ...
   }
  ```
