@@ -43,10 +43,10 @@ Qt Qml 的 Ant 设计组件库
 
 ## 🌈 陈列室预览
 
-<img width=800 height=500 src="preview/light.png">
-<img width=800 height=500 src="preview/dark.png">
-<img width=800 height=500 src="preview/doc.png">
-<img width=800 height=500 src="preview/designer.png">
+<img width=900 height=600 src="preview/light.png">
+<img width=900 height=600 src="preview/dark.png">
+<img width=900 height=600 src="preview/doc.png">
+<img width=900 height=600 src="preview/designer.png">
 
 </div>
 
